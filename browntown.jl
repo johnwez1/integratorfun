@@ -8,6 +8,17 @@ using Plots, ApproxFun
 #TODO: work through all this shit
 function browniansamples(t::AbstractVector{Float64})
     # TODO: return a `Vector{Float64}` of size `length(t)` corresponding to Brownian motion evaluated at `t`
+    Xs = [0.0]
+    Ys = [0.0]
+    for i in collect(2:length(t)-1)
+      variance = t[i+1] - t[i]
+      X = sqrt(variance)randn()
+      Y = sqrt(variance)randn()
+      push!(Xs, X)
+      push!(Ys, Y)
+    end
+    return Xs, Ys
+
 end
 
 # TODO: plot(browniansamples(linspace(0,2π,10000)))
